@@ -1,3 +1,5 @@
+//COLLADO JOHN FRANK
+//CITCS 1N A
 package com.mycompany.finallab4;
 class Song {
     String title;
