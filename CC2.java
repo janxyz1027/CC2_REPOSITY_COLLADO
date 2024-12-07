@@ -1,14 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.cc2.collado;
-
-/**
- *
- * @author janxyz
- */
-
 /*COLLADO JOHN FRANK D.             SEPT/12/24
 CITCS 1N GROUP A                    CC2
 */
