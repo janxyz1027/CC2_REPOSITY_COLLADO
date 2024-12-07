@@ -1,3 +1,5 @@
+//COLLADO JOHN FRANK
+//CITCS 1N A
 import java.util.Scanner;
 
 public class AttendanceSystem {
