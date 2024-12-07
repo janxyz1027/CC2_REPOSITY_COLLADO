@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
+//COLLADO JOHN FRANK
+//CITCS 1N A
 package com.mycompany.finalchallengeno1;
-
-/**
- *
- * @author janxyz
- */
 import java.util.Scanner;
 
 public class FinalChallengeNo1 {
