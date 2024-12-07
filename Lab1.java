@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
+//COLLADO JOHN FRANK
+//CITCS 1N A
 package com.mycompany.lab1;
-
-/**
- *
- * @author janxyz
- */
 public class Lab1 {
 
     public static void main(String[] args) {
