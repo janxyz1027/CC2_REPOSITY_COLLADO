@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+//COLLADO JOHN FRANK
+//CITCS 1N A
 
 package com.mycompany.lab8;
-
-/**
- *
- * @author janxyz
- */
 class Employee {
     String employeeID;
     String employeeName;
