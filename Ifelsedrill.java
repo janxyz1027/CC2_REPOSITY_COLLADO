@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
+//COLLADO JOHN FRANK
+//CITCS 1N A
 package com.mycompany.ifelsedrill;
-
-/**
- *
- * @author janxyz
- */
 import java.util.Scanner;
-
 public class Ifelsedrill {
 
     public static void main(String[] args) {
