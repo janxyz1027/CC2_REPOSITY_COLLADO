@@ -1,5 +1,6 @@
+//COLLADO JOHN FRANK
+//CITCS 1N A
 package com.mycompany.finallab5secondexception;
-
 import javax.swing.JOptionPane;
 public class FinalLab5SecondException {
 
