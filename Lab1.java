@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.laboratorychallenge;
+package com.mycompany.lab1;
 
 /**
  *
  * @author janxyz
  */
-public class LaboratoryChallenge {
+public class Lab1 {
 
     public static void main(String[] args) {
         System.out.println("\t\t\tJanxy\"s Store");//used "\t" and "\"" to center and include quotation marks in the store's name
