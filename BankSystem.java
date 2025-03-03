@@ -5,15 +5,11 @@ class BankAccount {
     protected String accountNumber;
     protected double balance;
 
- 
-
     // Constructor
     public BankAccount(String accountNumber, double balance) {
         this.accountNumber = accountNumber;
         this.balance = balance;
     }
-
- 
 
     // Deposit method (common to all accounts)
     public void deposit(double amount) {
@@ -25,14 +21,10 @@ class BankAccount {
         }
     }
 
- 
-
     // Withdraw method (overridden in child classes)
     public void withdraw(double amount) {
         System.out.println("Withdraw method should be implemented in specific account types.");
     }
-
- 
 
     // Display account info
     public void displayAccountInfo() {
@@ -40,8 +32,6 @@ class BankAccount {
         System.out.printf("Balance: %,.2f\n" ,balance);
     }
 }
-
- 
 
 // Child Class: Savings Account
 class SavingsAccount extends BankAccount {
@@ -75,8 +65,6 @@ class SavingsAccount extends BankAccount {
             System.out.println("Invalid withdrawal amount.");
         }
     }
-
- 
 
     // Display additional info
     @Override
