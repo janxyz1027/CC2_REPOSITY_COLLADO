@@ -1,64 +1,65 @@
-package com.mycompany.paymentprocessor;
+package paymentprocessor;
 import javax.swing.JOptionPane;
 
-//Abstract class
-abstract class Payment{
+// Abstract class
+abstract class Payment {
     protected double amount;
-    
-    //Constructor 
+
+    // Constructor 
     public Payment(double amount) {
         this.amount = amount;
     }
-    //Method
+
+    // Method
     public abstract void processPayment();
 }
 
-//Subclass
-class CreditCardPayment extends Payment{
+// Subclass
+class CreditCardPayment extends Payment {
     private String cardNumber;
-    
-    //Constructor
+
+    // Constructor
     public CreditCardPayment(double amount, String cardNumber) {
         super(amount);
         this.cardNumber = cardNumber;
     }
 
     @Override
-    //Override method
+    // Override method
     public void processPayment() {
         JOptionPane.showMessageDialog(null, "Processed credit card payment of PHP " + amount + " from card: " + cardNumber);
     }
 }
 
-//Subclass
-class DebitCardPayment extends Payment{
+// Subclass
+class DebitCardPayment extends Payment {
     private String cardNumber;
 
-    //Constructor
+    // Constructor
     public DebitCardPayment(double amount, String cardNumber) {
         super(amount);
         this.cardNumber = cardNumber;
     }
 
     @Override
-    //Override method
+    // Override method
     public void processPayment() {
         JOptionPane.showMessageDialog(null, "Processed debit card payment of PHP " + amount + " from card: " + cardNumber);
     }
 }
 
-//Subclass
-class DigitalWalletPayment extends Payment{
+// Subclass
+class DigitalWalletPayment extends Payment {
     private String walletID;
 
-    //Constructor
+    // Constructor
     public DigitalWalletPayment(double amount, String walletID) {
         super(amount);
         this.walletID = walletID;
     }
-    
+
     @Override
-    //Override method
+    // Override method
     public void processPayment() {
         JOptionPane.showMessageDialog(null, "Processed digital wallet payment of PHP " + amount + " from wallet: " + walletID);
     }
@@ -66,71 +67,111 @@ class DigitalWalletPayment extends Payment{
 
 public class PaymentProcessor {
     public static void main(String[] args) {
-        //User options of payment method
+        // User options of payment method
         String[] options = { "Credit Card", "Debit Card", "Digital Wallet" };
-        
-        //Asks the user what payment method will the user use
+
+        // Asks the user what payment method will the user use
         int choice = JOptionPane.showOptionDialog(null, "Select payment method:", "Payment System",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options);
-        
-        //When the user choose to exit
+
+        // When the user chooses to exit
         while (choice == -1) {
-            int confirm = JOptionPane.showConfirmDialog(null, "No option selected. Do you want to exit?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+            int confirm = JOptionPane.showConfirmDialog(null, "Do you want to exit?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
-                JOptionPane.showMessageDialog(null, "Exiting...");
+                JOptionPane.showMessageDialog(null, "Exiting");
                 return;
             }
         }
-        
+
         double amount = 0;
         while (true) {
             try {
                 String amountInput = JOptionPane.showInputDialog("Enter payment amount:");
-                if (amountInput == null || amountInput.isEmpty()) {
+                
+                // Check if the user clicked "Cancel" or closed the dialog
+                if (amountInput == null) {
+                    int confirm = JOptionPane.showConfirmDialog(null, "Do you want to exit?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+                    if (confirm == JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null, "Exiting...");
+                        return; // Exit the program
+                    } else {
+                        continue; // Go back to asking for the amount
+                    }
+                }
+
+                if (amountInput.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid amount.");
                     continue;
                 }
+
                 amount = Double.parseDouble(amountInput);
                 if (amount <= 0) {
                     JOptionPane.showMessageDialog(null, "Amount must be greater than zero.");
                     continue;
                 }
-                break;
+                break; // Valid amount entered, exit the loop
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null, "Invalid input. Please enter a numeric value.");
             }
         }
-        
-        //To reserve for Payment object before assigning it 
+
+        // To reserve for Payment object before assigning it 
         Payment payment = null;
-        
+
         while (true) {
             try {
                 String input = "";
                 switch (choice) {
-                    case 0: //Credit Card
+                    case 0: // Credit Card
                         input = JOptionPane.showInputDialog("Enter credit card number:");
-                        if (input == null || input.isEmpty()) throw new Exception("Card number cannot be empty.");
+                        if (input == null) {
+                            int confirm = JOptionPane.showConfirmDialog(null, "Do you want to exit?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+                            if (confirm == JOptionPane.YES_OPTION) {
+                                JOptionPane.showMessageDialog(null, "Exiting...");
+                                return; // Exit the program
+                            } else {
+                                continue; // Go back to asking for the card number
+                            }
+                        }
+                        if (input.isEmpty()) throw new Exception("Card number cannot be empty.");
                         payment = new CreditCardPayment(amount, input);
                         break;
-                    case 1: //Debit Card
+                    case 1: // Debit Card
                         input = JOptionPane.showInputDialog("Enter debit card number:");
-                        if (input == null || input.isEmpty()) throw new Exception("Card number cannot be empty.");
+                        if (input == null) {
+                            int confirm = JOptionPane.showConfirmDialog(null, "Do you want to exit?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+                            if (confirm == JOptionPane.YES_OPTION) {
+                                JOptionPane.showMessageDialog(null, "Exiting...");
+                                return; // Exit the program
+                            } else {
+                                continue; // Go back to asking for the card number
+                            }
+                        }
+                        if (input.isEmpty()) throw new Exception("Card number cannot be empty.");
                         payment = new DebitCardPayment(amount, input);
                         break;
-                    case 2: //Digital Wallet
+                    case 2: // Digital Wallet
                         input = JOptionPane.showInputDialog("Enter digital wallet ID:");
-                        if (input == null || input.isEmpty()) throw new Exception("Wallet ID cannot be empty.");
+                        if (input == null) {
+                            int confirm = JOptionPane.showConfirmDialog(null, "Do you want to exit?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
+                            if (confirm == JOptionPane.YES_OPTION) {
+                                JOptionPane.showMessageDialog(null, "Exiting...");
+                                return; //Exit the program
+                            } else {
+                                continue; //Go back to asking for the wallet ID
+                            }
+                        }
+                        if (input.isEmpty()) throw new Exception("Wallet ID cannot be empty.");
                         payment = new DigitalWalletPayment(amount, input);
                         break;
                 }
-                break;
+                break; // Exit the loop if payment is successfully created
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
         }
-        
-        //Checks if the payment is not empty
+
+        // Checks if the payment is not empty
         if (payment != null) {
             payment.processPayment();
             JOptionPane.showMessageDialog(null, "Payment successful");
